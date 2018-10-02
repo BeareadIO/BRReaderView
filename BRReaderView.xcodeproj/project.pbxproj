@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		26214D71215F4387003C2823 /* ReaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26214D70215F4387003C2823 /* ReaderView.swift */; };
+		26214D73215F439A003C2823 /* BRReaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26214D72215F439A003C2823 /* BRReaderView.swift */; };
+		26214D75215F45EE003C2823 /* ReaderParserProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26214D74215F45EE003C2823 /* ReaderParserProtocol.swift */; };
+		26214D77215F465E003C2823 /* ReaderParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26214D76215F465E003C2823 /* ReaderParser.swift */; };
+		26214D79215F49C0003C2823 /* ReaderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26214D78215F49C0003C2823 /* ReaderItem.swift */; };
 		28EBE136214BC07D008DD1C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EBE135214BC07D008DD1C5 /* AppDelegate.swift */; };
 		28EBE138214BC07D008DD1C5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EBE137214BC07D008DD1C5 /* ViewController.swift */; };
 		28EBE13B214BC07D008DD1C5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28EBE139214BC07D008DD1C5 /* Main.storyboard */; };
@@ -26,6 +31,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		26214D70215F4387003C2823 /* ReaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderView.swift; sourceTree = "<group>"; };
+		26214D72215F439A003C2823 /* BRReaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRReaderView.swift; sourceTree = "<group>"; };
+		26214D74215F45EE003C2823 /* ReaderParserProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderParserProtocol.swift; sourceTree = "<group>"; };
+		26214D76215F465E003C2823 /* ReaderParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderParser.swift; sourceTree = "<group>"; };
+		26214D78215F49C0003C2823 /* ReaderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderItem.swift; sourceTree = "<group>"; };
 		28EBE132214BC07D008DD1C5 /* BRReaderView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BRReaderView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28EBE135214BC07D008DD1C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		28EBE137214BC07D008DD1C5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -79,6 +89,11 @@
 			children = (
 				28EBE135214BC07D008DD1C5 /* AppDelegate.swift */,
 				28EBE137214BC07D008DD1C5 /* ViewController.swift */,
+				26214D72215F439A003C2823 /* BRReaderView.swift */,
+				26214D70215F4387003C2823 /* ReaderView.swift */,
+				26214D74215F45EE003C2823 /* ReaderParserProtocol.swift */,
+				26214D76215F465E003C2823 /* ReaderParser.swift */,
+				26214D78215F49C0003C2823 /* ReaderItem.swift */,
 				28EBE139214BC07D008DD1C5 /* Main.storyboard */,
 				28EBE13C214BC07D008DD1C5 /* Assets.xcassets */,
 				28EBE13E214BC07D008DD1C5 /* LaunchScreen.storyboard */,
@@ -198,7 +213,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				28EBE138214BC07D008DD1C5 /* ViewController.swift in Sources */,
+				26214D71215F4387003C2823 /* ReaderView.swift in Sources */,
 				28EBE136214BC07D008DD1C5 /* AppDelegate.swift in Sources */,
+				26214D77215F465E003C2823 /* ReaderParser.swift in Sources */,
+				26214D75215F45EE003C2823 /* ReaderParserProtocol.swift in Sources */,
+				26214D79215F49C0003C2823 /* ReaderItem.swift in Sources */,
+				26214D73215F439A003C2823 /* BRReaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
