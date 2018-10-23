@@ -10,12 +10,29 @@ import UIKit
 
 class BRReaderView: ReaderView {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    override init(frame: CGRect, textContainer: NSTextContainer?) {
+        super.init(frame: frame, textContainer: textContainer)
     }
-    */
-
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        menuInit()
+    }
+    
+    private func menuInit() {
+        let markMenuItem = UIMenuItem(title: "马克此段", action: #selector(markContent))
+        UIMenuController.shared.menuItems = [markMenuItem]
+    }
+    
+    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+        if action == #selector(markContent), selectedRange.length != 0 {
+            return true
+        }
+        return false
+    }
+    
+    @objc func markContent() {
+        let range = self.layoutManager.glyphRange(forBoundingRect: CGRect.init(x: 0, y: 200, width: UIScreen.main.bounds.size.width - 30, height: 300), in: self.textContainer)
+        print(range)
+    }
 }

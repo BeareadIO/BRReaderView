@@ -25,15 +25,23 @@ struct ReaderImage {
     var url: String = ""
 }
 
+struct ReaderParagraph {
+    var text: String = ""
+    var sort: Int = 1
+}
+
 struct ReaderMark {
     
 }
 
 extension ReaderItem {
-    convenience init(text: String) {
+    convenience init(text: String, sort: Int) {
         self.init()
         self.type = .text
-        self.data = text
+        var paragraph = ReaderParagraph()
+        paragraph.text = text
+        paragraph.sort = sort
+        self.data = paragraph
     }
     
     convenience init(url: String) {
