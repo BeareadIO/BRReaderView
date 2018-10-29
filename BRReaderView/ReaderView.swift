@@ -93,8 +93,9 @@ class ReaderView: UITextView {
     
     private func propertyInit() {
         isEditable = false
+        isSelectable = true
         layoutManager.delegate = self
-        layoutManager.allowsNonContiguousLayout = true
+        layoutManager.allowsNonContiguousLayout = false
         updateHeight()
     }
     
@@ -108,7 +109,7 @@ class ReaderView: UITextView {
     private func configureAttributes() {
         var attributes: [NSAttributedString.Key: Any] = [:]
         attributes[.font] = UIFont.systemFont(ofSize: fontSize)
-        attributes[.foregroundColor] = UIColor.lightGray
+        attributes[.foregroundColor] = UIColor.black
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.firstLineHeadIndent = fontSize * 2
         attributes[.paragraphStyle] = paragraphStyle
@@ -125,10 +126,10 @@ class ReaderView: UITextView {
     private func parseDataArray(array: [ReaderItem]) {
         textStorage.deleteCharacters(in: NSRange(location: 0, length: textStorage.length))
     
-        for (index, item) in array.enumerated() {
+        for item in array {
             if item.type == .text {
-                if let str = item.data as? String {
-                    textStorage.append(NSAttributedString(string: (index != array.count - 1 ? str + "\n" : str)))
+                if let paragraph = item.data as? ReaderParagraph {
+                    textStorage.append(NSAttributedString(string: paragraph.text))
                 }
             } else {
                 let range = NSRange(location: textStorage.length, length: 0)
@@ -137,6 +138,8 @@ class ReaderView: UITextView {
         }
         
         configureAttributes()
+        updateComponentLayout()
+        updateHeight()
     }
     
     /// 添加自定义视图
@@ -151,8 +154,19 @@ class ReaderView: UITextView {
         }
         
         addSubview(customView)
+        
+        let attachment = ReaderAttachment(data: nil, ofType: nil)
+        let width = UIScreen.main.bounds.width - textContainer.lineFragmentPadding * 2
+        attachment.bounds = CGRect(x: 0, y: 0, width: width, height: customView.frame.size.height)
+        attachment.item = readerItem
+        attachment.view = customView
+        
+        let insertedAttrText = NSMutableAttributedString()
+        let currentLocation = range.location + range.length
+        
+        insertedAttrText.append(NSAttributedString(attachment: attachment))
+        textStorage.insert(insertedAttrText, at: currentLocation)
     }
-    
     
     /// 逻辑判断添加Mark项
     ///
@@ -162,6 +176,19 @@ class ReaderView: UITextView {
         guard isMarkShow else { return data }
         /// mark展示的逻辑 <p>标签后<br>之前
         return data
+    }
+    
+    
+    private func updateComponentLayout() {
+        let contentRange = NSRange(location: 0, length: textStorage.length)
+        textStorage.enumerateAttribute(NSAttributedString.Key.attachment, in: contentRange) { [weak self] (attribute, range, _) in
+            guard let `self` = self else { return }
+            if let attachment = attribute as? ReaderAttachment, let v = attachment.view {
+                let textRange = range.convertToUITextRange(with: self)
+                let rect = firstRect(for: textRange)
+                v.frame = CGRect(x: 0, y: rect.minY, width: UIScreen.main.bounds.width, height: rect.height - 1.5)
+            }
+        }
     }
 }
 

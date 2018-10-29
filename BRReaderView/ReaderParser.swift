@@ -17,7 +17,7 @@ class ReaderParser: ReaderParserProtocol {
     
     func parseText(_ text: String) -> [ReaderItem] {
         var items: [ReaderItem] = []
-        let newText = textReplacement(text)
+        let newText = ReaderHelper.shared.textReplacement(text)
         let paragraphs = logicalDivision(newText)
         for paragraph in paragraphs {
             let content = paragraph["content"] ?? ""
@@ -36,26 +36,7 @@ class ReaderParser: ReaderParserProtocol {
         }
         return items
     }
-    
-    /// 替换文本网页特殊标签
-    ///
-    /// - Parameter text: 原始文本
-    /// - Returns: 替换后文本
-    private func textReplacement(_ text: String) -> String {
-        var newText = text.replacingOccurrences(of: "&nbsp;", with: " ")
-        newText = newText.replacingOccurrences(of: "&lt;", with: "<")
-        newText = newText.replacingOccurrences(of: "&gt;", with: ">")
-        newText = newText.replacingOccurrences(of: "&amp;", with: "&")
-        newText = newText.replacingOccurrences(of: "&quot;", with: "\"")
-        newText = newText.replacingOccurrences(of: "&copy;", with: "©")
-        newText = newText.replacingOccurrences(of: "\r\n", with: "\n")
-        newText = newText.replacingOccurrences(of: "\r", with: "\n")
-        newText = newText.replacingOccurrences(of: "\u{2028}", with: "\n")
-        newText = newText.replacingOccurrences(of: "\u{2029}", with: "\n")
-        newText = newText.replacingOccurrences(of: "\t", with: " ")
-        return newText
-    }
-    
+        
     /// 按照<p sort=index>标签规则进行文本逻辑切分
     ///
     /// - Parameter text: 原始文本
@@ -70,7 +51,8 @@ class ReaderParser: ReaderParserProtocol {
                     info["content"] = String(str)
                 }
                 if let range = result?.range(at: 1) {
-                    let str = (text as NSString).substring(with: range)
+                    // sort="1.2.3..." 除去双引号
+                    let str = (text as NSString).substring(with: NSRange(location: range.location + 1, length: range.length - 2))
                     info["sort"] = String(str)
                 }
                 paragraphs.append(info)

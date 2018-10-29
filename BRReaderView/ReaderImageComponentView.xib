@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ReaderImageComponentView" customModule="BRReaderView" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="210"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ivf-KZ-LxV">
+                    <rect key="frame" x="15" y="7" width="345" height="196"/>
+                    <subviews>
+                        <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TCc-Xr-3NE">
+                            <rect key="frame" x="0.0" y="0.0" width="300" height="196"/>
+                            <color key="backgroundColor" red="0.84996783730000003" green="0.8732156754" blue="0.8875709772" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="300" id="YDD-as-aIR"/>
+                            </constraints>
+                        </imageView>
+                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hd6-6H-LIn">
+                            <rect key="frame" x="0.0" y="0.0" width="345" height="196"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Nqb-ia-NKG">
+                                    <rect key="frame" x="76.5" y="83.5" width="192" height="29"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="图片加载失败，点击" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0qc-7E-b83">
+                                            <rect key="frame" x="0.0" y="0.0" width="129" height="29"/>
+                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                            <color key="textColor" red="0.64705882349999999" green="0.66274509800000003" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="theme_textColorKeyPath" value="Color.ABAEB0_707376"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J4a-MT-OH2">
+                                            <rect key="frame" x="134" y="0.0" width="58" height="29"/>
+                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                            <state key="normal" title="重新加载">
+                                                <color key="titleColor" red="0.1526886821" green="0.5407982469" blue="0.99851500989999997" alpha="1" colorSpace="calibratedRGB"/>
+                                            </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="theme_normalTitleColorKeyPath" value="Color.2E9FFF_2777BA"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </button>
+                                    </subviews>
+                                </stackView>
+                            </subviews>
+                            <color key="backgroundColor" red="0.84996783730000003" green="0.8732156754" blue="0.8875709772" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstItem="Nqb-ia-NKG" firstAttribute="centerX" secondItem="hd6-6H-LIn" secondAttribute="centerX" id="BE8-Ow-AXl"/>
+                                <constraint firstItem="Nqb-ia-NKG" firstAttribute="centerY" secondItem="hd6-6H-LIn" secondAttribute="centerY" id="wtg-zb-UiP"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="theme_backgroundColorKeyPath" value="Color.E0E5E8_252525"/>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="TCc-Xr-3NE" secondAttribute="bottom" id="Whv-jZ-KGU"/>
+                        <constraint firstItem="hd6-6H-LIn" firstAttribute="leading" secondItem="ivf-KZ-LxV" secondAttribute="leading" id="ZdC-6J-DD5"/>
+                        <constraint firstAttribute="bottom" secondItem="hd6-6H-LIn" secondAttribute="bottom" id="lgy-8r-3JM"/>
+                        <constraint firstItem="TCc-Xr-3NE" firstAttribute="leading" secondItem="ivf-KZ-LxV" secondAttribute="leading" id="njL-4c-88Q"/>
+                        <constraint firstItem="hd6-6H-LIn" firstAttribute="top" secondItem="ivf-KZ-LxV" secondAttribute="top" id="qYN-GD-jX3"/>
+                        <constraint firstAttribute="trailing" secondItem="hd6-6H-LIn" secondAttribute="trailing" id="s5d-U5-R0y"/>
+                        <constraint firstItem="TCc-Xr-3NE" firstAttribute="top" secondItem="ivf-KZ-LxV" secondAttribute="top" id="xbk-M2-bl3"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="ivf-KZ-LxV" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="ACQ-gj-jr1"/>
+                <constraint firstItem="ivf-KZ-LxV" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="7" id="RnR-w8-MsL"/>
+                <constraint firstAttribute="trailing" secondItem="ivf-KZ-LxV" secondAttribute="trailing" constant="15" id="Xat-MG-FCc"/>
+                <constraint firstAttribute="bottom" secondItem="ivf-KZ-LxV" secondAttribute="bottom" constant="7" id="yVT-oT-34I"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="btnReload" destination="J4a-MT-OH2" id="FBv-Lb-QXY"/>
+                <outlet property="containerBottomConstraint" destination="yVT-oT-34I" id="EoT-3V-GHF"/>
+                <outlet property="containerTopConstraint" destination="RnR-w8-MsL" id="jai-es-vso"/>
+                <outlet property="imageWidthConstraint" destination="YDD-as-aIR" id="e99-aE-pow"/>
+                <outlet property="imgViewImage" destination="TCc-Xr-3NE" id="C7c-Hc-stR"/>
+                <outlet property="lblState" destination="0qc-7E-b83" id="ABd-Px-DN5"/>
+                <outlet property="placeHolderView" destination="hd6-6H-LIn" id="y0d-1D-k50"/>
+            </connections>
+            <point key="canvasLocation" x="333.60000000000002" y="208.69565217391306"/>
+        </view>
+    </objects>
+</document>

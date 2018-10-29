@@ -12,6 +12,10 @@
 		26214D75215F45EE003C2823 /* ReaderParserProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26214D74215F45EE003C2823 /* ReaderParserProtocol.swift */; };
 		26214D77215F465E003C2823 /* ReaderParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26214D76215F465E003C2823 /* ReaderParser.swift */; };
 		26214D79215F49C0003C2823 /* ReaderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26214D78215F49C0003C2823 /* ReaderItem.swift */; };
+		26A6B98C218046B7009DB327 /* ReaderImageComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A6B98B218046B7009DB327 /* ReaderImageComponentView.swift */; };
+		26A6B98E218046C9009DB327 /* ReaderImageComponentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26A6B98D218046C9009DB327 /* ReaderImageComponentView.xib */; };
+		26A6B99021804FB3009DB327 /* ReaderMarkComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A6B98F21804FB3009DB327 /* ReaderMarkComponentView.swift */; };
+		26A6B99221804FC4009DB327 /* ReaderMarkComponentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26A6B99121804FC4009DB327 /* ReaderMarkComponentView.xib */; };
 		26E04112217EC13B001A120D /* ReaderHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E04111217EC13B001A120D /* ReaderHelper.swift */; };
 		28EBE136214BC07D008DD1C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EBE135214BC07D008DD1C5 /* AppDelegate.swift */; };
 		28EBE138214BC07D008DD1C5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EBE137214BC07D008DD1C5 /* ViewController.swift */; };
@@ -19,6 +23,7 @@
 		28EBE13D214BC07D008DD1C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28EBE13C214BC07D008DD1C5 /* Assets.xcassets */; };
 		28EBE140214BC07D008DD1C5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28EBE13E214BC07D008DD1C5 /* LaunchScreen.storyboard */; };
 		28EBE14B214BC07D008DD1C5 /* BRReaderViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EBE14A214BC07D008DD1C5 /* BRReaderViewUITests.swift */; };
+		C0D7938415B1961B8F4F57B2 /* Pods_BRReaderView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF03E3B95B4602FC4BEA6D2E /* Pods_BRReaderView.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +42,10 @@
 		26214D74215F45EE003C2823 /* ReaderParserProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderParserProtocol.swift; sourceTree = "<group>"; };
 		26214D76215F465E003C2823 /* ReaderParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderParser.swift; sourceTree = "<group>"; };
 		26214D78215F49C0003C2823 /* ReaderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderItem.swift; sourceTree = "<group>"; };
+		26A6B98B218046B7009DB327 /* ReaderImageComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderImageComponentView.swift; sourceTree = "<group>"; };
+		26A6B98D218046C9009DB327 /* ReaderImageComponentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReaderImageComponentView.xib; sourceTree = "<group>"; };
+		26A6B98F21804FB3009DB327 /* ReaderMarkComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderMarkComponentView.swift; sourceTree = "<group>"; };
+		26A6B99121804FC4009DB327 /* ReaderMarkComponentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReaderMarkComponentView.xib; sourceTree = "<group>"; };
 		26E04111217EC13B001A120D /* ReaderHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderHelper.swift; sourceTree = "<group>"; };
 		28EBE132214BC07D008DD1C5 /* BRReaderView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BRReaderView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28EBE135214BC07D008DD1C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -48,6 +57,9 @@
 		28EBE146214BC07D008DD1C5 /* BRReaderViewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BRReaderViewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		28EBE14A214BC07D008DD1C5 /* BRReaderViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRReaderViewUITests.swift; sourceTree = "<group>"; };
 		28EBE14C214BC07D008DD1C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2D1344A81775217CFBAEA557 /* Pods-BRReaderView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BRReaderView.release.xcconfig"; path = "Pods/Target Support Files/Pods-BRReaderView/Pods-BRReaderView.release.xcconfig"; sourceTree = "<group>"; };
+		C11C5F87AE3067A8F2CC1357 /* Pods-BRReaderView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BRReaderView.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BRReaderView/Pods-BRReaderView.debug.xcconfig"; sourceTree = "<group>"; };
+		EF03E3B95B4602FC4BEA6D2E /* Pods_BRReaderView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BRReaderView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0D7938415B1961B8F4F57B2 /* Pods_BRReaderView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +87,8 @@
 				28EBE134214BC07D008DD1C5 /* BRReaderView */,
 				28EBE149214BC07D008DD1C5 /* BRReaderViewUITests */,
 				28EBE133214BC07D008DD1C5 /* Products */,
+				DD2CD4BAF5C900A9ABBC97BD /* Pods */,
+				F228FCA8542B560A3A419064 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,6 +112,10 @@
 				26E04111217EC13B001A120D /* ReaderHelper.swift */,
 				26214D76215F465E003C2823 /* ReaderParser.swift */,
 				26214D78215F49C0003C2823 /* ReaderItem.swift */,
+				26A6B98B218046B7009DB327 /* ReaderImageComponentView.swift */,
+				26A6B98D218046C9009DB327 /* ReaderImageComponentView.xib */,
+				26A6B98F21804FB3009DB327 /* ReaderMarkComponentView.swift */,
+				26A6B99121804FC4009DB327 /* ReaderMarkComponentView.xib */,
 				28EBE139214BC07D008DD1C5 /* Main.storyboard */,
 				28EBE13C214BC07D008DD1C5 /* Assets.xcassets */,
 				28EBE13E214BC07D008DD1C5 /* LaunchScreen.storyboard */,
@@ -114,6 +133,23 @@
 			path = BRReaderViewUITests;
 			sourceTree = "<group>";
 		};
+		DD2CD4BAF5C900A9ABBC97BD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C11C5F87AE3067A8F2CC1357 /* Pods-BRReaderView.debug.xcconfig */,
+				2D1344A81775217CFBAEA557 /* Pods-BRReaderView.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		F228FCA8542B560A3A419064 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EF03E3B95B4602FC4BEA6D2E /* Pods_BRReaderView.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -121,9 +157,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 28EBE14F214BC07D008DD1C5 /* Build configuration list for PBXNativeTarget "BRReaderView" */;
 			buildPhases = (
+				BCA1BEA8C52FBE8BED4D2FC7 /* [CP] Check Pods Manifest.lock */,
 				28EBE12E214BC07D008DD1C5 /* Sources */,
 				28EBE12F214BC07D008DD1C5 /* Frameworks */,
 				28EBE130214BC07D008DD1C5 /* Resources */,
+				7CD2069F55F9F5ADE099699E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -196,6 +234,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				28EBE140214BC07D008DD1C5 /* LaunchScreen.storyboard in Resources */,
+				26A6B99221804FC4009DB327 /* ReaderMarkComponentView.xib in Resources */,
+				26A6B98E218046C9009DB327 /* ReaderImageComponentView.xib in Resources */,
 				28EBE13D214BC07D008DD1C5 /* Assets.xcassets in Resources */,
 				28EBE13B214BC07D008DD1C5 /* Main.storyboard in Resources */,
 			);
@@ -210,18 +250,67 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		7CD2069F55F9F5ADE099699E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-BRReaderView/Pods-BRReaderView-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BRReaderView/Pods-BRReaderView-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BCA1BEA8C52FBE8BED4D2FC7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BRReaderView-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		28EBE12E214BC07D008DD1C5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				26E04112217EC13B001A120D /* ReaderHelper.swift in Sources */,
+				26A6B98C218046B7009DB327 /* ReaderImageComponentView.swift in Sources */,
 				28EBE138214BC07D008DD1C5 /* ViewController.swift in Sources */,
 				26214D71215F4387003C2823 /* ReaderView.swift in Sources */,
 				28EBE136214BC07D008DD1C5 /* AppDelegate.swift in Sources */,
 				26214D77215F465E003C2823 /* ReaderParser.swift in Sources */,
 				26214D75215F45EE003C2823 /* ReaderParserProtocol.swift in Sources */,
 				26214D79215F49C0003C2823 /* ReaderItem.swift in Sources */,
+				26A6B99021804FB3009DB327 /* ReaderMarkComponentView.swift in Sources */,
 				26214D73215F439A003C2823 /* BRReaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -382,6 +471,7 @@
 		};
 		28EBE150214BC07D008DD1C5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C11C5F87AE3067A8F2CC1357 /* Pods-BRReaderView.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -399,6 +489,7 @@
 		};
 		28EBE151214BC07D008DD1C5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2D1344A81775217CFBAEA557 /* Pods-BRReaderView.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
