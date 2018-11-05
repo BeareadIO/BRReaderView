@@ -32,7 +32,6 @@ class BRReaderView: ReaderView {
     }
     
     @objc func markContent() {
-        let range = self.layoutManager.glyphRange(forBoundingRect: CGRect.init(x: 0, y: 200, width: UIScreen.main.bounds.size.width - 30, height: 300), in: self.textContainer)
-        print(range)
+        self.markReaderContent(range: self.selectedRange)
     }
 }

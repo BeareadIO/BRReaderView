@@ -7,9 +7,13 @@
 //
 
 import UIKit
+import TinyConstraints
 
 //open func glyphRange(forBoundingRect bounds: CGRect, in container: NSTextContainer) -> NSRange <-> NSLayoutManager Function
 //binary search(half-interval search)
+
+fileprivate let defaultMarkWidth: CGFloat = 16.0
+fileprivate let maxMarkWidth: CGFloat = 24.0
 
 protocol ReaderViewDelegate: UITextViewDelegate {
     /// 返回阅读器中的图片，或者马克
@@ -25,15 +29,21 @@ protocol ReaderViewDelegate: UITextViewDelegate {
 class ReaderView: UITextView {
 
     /// 是否显示马克
-    var isMarkShow: Bool = false {
+    var isMarkShow: Bool = true {
         didSet {
-            parseDataArray(array: markLogicAppend(data: dataArray))
+            updateHeight()
+        }
+    }
+    
+    var isFirstLineIndent: Bool = true {
+        didSet {
+            configureAttributes()
             updateHeight()
         }
     }
     
     /// 字体大小
-    var fontSize: CGFloat = 15 {
+    var fontSize: CGFloat = 21 {
         didSet {
             configureAttributes()
             updateHeight()
@@ -43,7 +53,7 @@ class ReaderView: UITextView {
     /// 默认展示项（不包含马克）
     private var dataArray: [ReaderItem] = [] {
         didSet {
-            parseDataArray(array: markLogicAppend(data: dataArray))
+            parseDataArray(array: dataArray)
             updateHeight()
         }
     }
@@ -59,11 +69,6 @@ class ReaderView: UITextView {
     var parser: ReaderParserProtocol?
     
     var readerViewDelegate: ReaderViewDelegate?
-    
-    lazy var dynamicHeight: CGFloat = {
-        let height = sizeThatFits(CGSize(width: self.bounds.size.width, height: CGFloat(MAXFLOAT))).height
-        return height
-    }()
     
     override init(frame: CGRect, textContainer: NSTextContainer?) {
         super.init(frame: frame, textContainer: textContainer)
@@ -88,12 +93,13 @@ class ReaderView: UITextView {
     }
     
     override var intrinsicContentSize: CGSize {
-         return CGSize(width: UIView.noIntrinsicMetric, height: dynamicHeight)
+         return CGSize(width: UIView.noIntrinsicMetric, height: sizeThatFits(CGSize(width: self.bounds.size.width, height: CGFloat(MAXFLOAT))).height)
     }
     
     private func propertyInit() {
         isEditable = false
         isSelectable = true
+        isScrollEnabled = false
         layoutManager.delegate = self
         layoutManager.allowsNonContiguousLayout = false
         updateHeight()
@@ -101,7 +107,7 @@ class ReaderView: UITextView {
     
     private func updateHeight() {
         layoutIfNeeded()
-        self.frame.size.height = dynamicHeight
+        self.frame.size.height = sizeThatFits(CGSize(width: self.bounds.size.width, height: CGFloat(MAXFLOAT))).height
         invalidateIntrinsicContentSize()
     }
     
@@ -111,8 +117,15 @@ class ReaderView: UITextView {
         attributes[.font] = UIFont.systemFont(ofSize: fontSize)
         attributes[.foregroundColor] = UIColor.black
         let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.firstLineHeadIndent = fontSize * 2
+        paragraphStyle.firstLineHeadIndent = isFirstLineIndent ? fontSize * 2 : 0
         attributes[.paragraphStyle] = paragraphStyle
+        
+        var linkAttributes: [NSAttributedString.Key: Any] = [:]
+        linkAttributes[.font] = UIFont.systemFont(ofSize: fontSize)
+        linkAttributes[.foregroundColor] = UIColor.black
+        linkAttributes[.paragraphStyle] = paragraphStyle
+        
+        self.linkTextAttributes = linkAttributes
         
         let range = NSRange(location: 0, length: textStorage.length)
         textStorage.addAttributes(attributes, range: range)
@@ -156,8 +169,16 @@ class ReaderView: UITextView {
         addSubview(customView)
         
         let attachment = ReaderAttachment(data: nil, ofType: nil)
-        let width = UIScreen.main.bounds.width - textContainer.lineFragmentPadding * 2
-        attachment.bounds = CGRect(x: 0, y: 0, width: width, height: customView.frame.size.height)
+        if readerItem.type == .image {
+            let width = UIScreen.main.bounds.width - textContainer.lineFragmentPadding * 2
+            attachment.bounds = CGRect(x: 0, y: 0, width: width, height: customView.frame.size.height)
+        } else if readerItem.type == .mark {
+            var width: CGFloat = 0
+            if let mark = readerItem.data as? ReaderMark {
+                width = (mark.count == 0) ? 0 : (isMarkShow ? ( mark.count > 99 ? maxMarkWidth : defaultMarkWidth ) : 0)
+            }
+            attachment.bounds = CGRect(x: 0, y: 0, width: width > 16 ? (width + 6) : width, height: 16)
+        }
         attachment.item = readerItem
         attachment.view = customView
         
@@ -168,27 +189,63 @@ class ReaderView: UITextView {
         textStorage.insert(insertedAttrText, at: currentLocation)
     }
     
-    /// 逻辑判断添加Mark项
-    ///
-    /// - Parameter data: 原始阅读展示项
-    /// - Returns: 最终阅读展示项
-    private func markLogicAppend(data: [ReaderItem]) -> [ReaderItem] {
-        guard isMarkShow else { return data }
-        /// mark展示的逻辑 <p>标签后<br>之前
-        return data
-    }
-    
-    
+    /// 更新组件布局
     private func updateComponentLayout() {
         let contentRange = NSRange(location: 0, length: textStorage.length)
         textStorage.enumerateAttribute(NSAttributedString.Key.attachment, in: contentRange) { [weak self] (attribute, range, _) in
             guard let `self` = self else { return }
-            if let attachment = attribute as? ReaderAttachment, let v = attachment.view {
-                let textRange = range.convertToUITextRange(with: self)
-                let rect = firstRect(for: textRange)
-                v.frame = CGRect(x: 0, y: rect.minY, width: UIScreen.main.bounds.width, height: rect.height - 1.5)
+            if let attachment = attribute as? ReaderAttachment {
+                if attachment.item?.type == .image {
+                    if let v = attachment.view {
+                        let textRange = range.convertToUITextRange(with: self)
+                        let rect = firstRect(for: textRange)
+                        v.leftToSuperview(offset: 0)
+                        v.topToSuperview(offset: rect.minY)
+                        v.width(UIScreen.main.bounds.width)
+                        v.height(rect.height - 1.5)
+                    }
+                } else if attachment.item?.type == .mark {
+                    if let v = attachment.view, let mark = attachment.item?.data as? ReaderMark {
+                        let textRange = range.convertToUITextRange(with: self)
+                        let rect = firstRect(for: textRange)
+                        let height = UIFont.systemFont(ofSize: fontSize).pointSize + 10 // lineSpacing
+                        v.leftToSuperview(offset: rect.minX)
+                        v.topToSuperview(offset: rect.minY + (height - 16) / 2.0)
+                        v.width((mark.count == 0) ? 0 : (isMarkShow ? ( mark.count > 99 ? maxMarkWidth : defaultMarkWidth ) : 0))
+                        v.height(16)
+                    }
+                }
             }
         }
+    }
+    
+    /// 马克阅读文本
+    ///
+    /// - Parameter range: 马克范围
+    func markReaderContent(range: NSRange) {
+        var attributes: [NSAttributedString.Key: Any] = [:]
+        attributes[.backgroundColor] = UIColor.lightGray
+        attributes[.font] = UIFont.systemFont(ofSize: fontSize)
+        attributes[.link] = "reader://"
+        attributes[.foregroundColor] = UIColor.black
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.firstLineHeadIndent = isFirstLineIndent ? fontSize * 2 : 0
+        attributes[.paragraphStyle] = paragraphStyle
+        textStorage.setAttributes(attributes, range: range)
+        self.selectedRange = NSRange(location: 0, length: 0)
+    }
+    
+    /// 取消马克阅读文本
+    ///
+    /// - Parameter range: 马克范围
+    func unmarkReaderContent(range: NSRange) {
+        var attributes: [NSAttributedString.Key: Any] = [:]
+        attributes[.font] = UIFont.systemFont(ofSize: fontSize)
+        attributes[.foregroundColor] = UIColor.black
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.firstLineHeadIndent = isFirstLineIndent ? fontSize * 2 : 0
+        attributes[.paragraphStyle] = paragraphStyle
+        textStorage.setAttributes(attributes, range: range)
     }
 }
 

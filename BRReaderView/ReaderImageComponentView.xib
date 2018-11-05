@@ -15,7 +15,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ivf-KZ-LxV">
-                    <rect key="frame" x="15" y="7" width="345" height="196"/>
+                    <rect key="frame" x="0.0" y="7" width="375" height="196"/>
                     <subviews>
                         <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TCc-Xr-3NE">
                             <rect key="frame" x="0.0" y="0.0" width="300" height="196"/>
@@ -25,10 +25,10 @@
                             </constraints>
                         </imageView>
                         <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hd6-6H-LIn">
-                            <rect key="frame" x="0.0" y="0.0" width="345" height="196"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="196"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Nqb-ia-NKG">
-                                    <rect key="frame" x="76.5" y="83.5" width="192" height="29"/>
+                                    <rect key="frame" x="91.5" y="83.5" width="192" height="29"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="图片加载失败，点击" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0qc-7E-b83">
                                             <rect key="frame" x="0.0" y="0.0" width="129" height="29"/>
@@ -76,9 +76,9 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="ivf-KZ-LxV" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="ACQ-gj-jr1"/>
+                <constraint firstItem="ivf-KZ-LxV" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ACQ-gj-jr1"/>
                 <constraint firstItem="ivf-KZ-LxV" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="7" id="RnR-w8-MsL"/>
-                <constraint firstAttribute="trailing" secondItem="ivf-KZ-LxV" secondAttribute="trailing" constant="15" id="Xat-MG-FCc"/>
+                <constraint firstAttribute="trailing" secondItem="ivf-KZ-LxV" secondAttribute="trailing" id="Xat-MG-FCc"/>
                 <constraint firstAttribute="bottom" secondItem="ivf-KZ-LxV" secondAttribute="bottom" constant="7" id="yVT-oT-34I"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

@@ -19,7 +19,7 @@ class ReaderHelper {
         }
         flatText = textReplacement(flatText)
         flatText = flatText.replacingOccurrences(of: "<br>", with: "\n")
-        if let reg = try? NSRegularExpression.init(pattern: "(<pic.*/pic>)", options: NSRegularExpression.Options(rawValue: 0)) {
+        if let reg = try? NSRegularExpression.init(pattern: "(<\\s*?pic\\s*?>(.*?)(</pic\\s*?>|>))", options: NSRegularExpression.Options(rawValue: 0)) {
             let range = NSRange(location: 0, length: (flatText as NSString).length)
             flatText = reg.stringByReplacingMatches(in: flatText, options: [], range: range, withTemplate: "\u{fffc}")
         }

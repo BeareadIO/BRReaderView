@@ -36,7 +36,7 @@ class ReaderImageComponentView: UIView {
         }
         let imageWidth = size.width / 2
         let imageHeight = size.height / 2
-        let maxWidth = UIScreen.main.bounds.width - 30 * 2
+        let maxWidth = UIScreen.main.bounds.width - 15 * 2
         if imageWidth > maxWidth {
             size = CGSize(width: maxWidth, height: imageHeight * (maxWidth / imageWidth))
         } else {

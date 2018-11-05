@@ -31,7 +31,8 @@ struct ReaderParagraph {
 }
 
 struct ReaderMark {
-    
+    var count: Int = 1
+    var sort: Int = 1
 }
 
 extension ReaderItem {
@@ -58,9 +59,12 @@ extension ReaderItem {
         self.data = readerImage
     }
     
-    convenience init(mark: String) {
+    convenience init(mark count: Int) {
         self.init()
         self.type = .mark
+        var readerMark = ReaderMark()
+        readerMark.count = count
+        self.data = readerMark
     }
     
     override var description: String {

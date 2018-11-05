@@ -33,6 +33,8 @@ class ReaderParser: ReaderParserProtocol {
             }
             let item = ReaderItem(text: content, sort: sort)
             items.append(item)
+            let mark = ReaderItem(mark: 99)
+            items.append(mark)
         }
         return items
     }
@@ -69,13 +71,13 @@ class ReaderParser: ReaderParserProtocol {
     ///   - items: 用来储存ReaderItem的集合
     private func parseParagraph(paragraph: String, items: inout [ReaderItem], sort: Int) {
         var offset: Int = 0
-        if let reg = try? NSRegularExpression.init(pattern: "<pic(.*?)>(.*?)</pic>", options: NSRegularExpression.Options(rawValue: 0)) {
+        if let reg = try? NSRegularExpression.init(pattern: "<\\s*?pic\\s*?>(.*?)(</pic\\s*?>|>)", options: NSRegularExpression.Options(rawValue: 0)) {
             reg.enumerateMatches(in: paragraph, options:  NSRegularExpression.MatchingOptions(rawValue: 0), range: NSRange(location: 0, length: paragraph.utf16.count)) { (result, flag, stop) in
                 if let range = result?.range {
                     if range.location == offset {
                         offset = range.length + range.location
                     } else {
-                        let str = (paragraph as NSString).substring(with: NSRange(location: 0, length: range.location))
+                        let str = (paragraph as NSString).substring(with: NSRange(location: offset, length: range.location - offset))
                         offset = range.location + range.length
                         let item = ReaderItem(text: str, sort: sort)
                         items.append(item)
@@ -83,7 +85,7 @@ class ReaderParser: ReaderParserProtocol {
                 }
                 
                 var url: String? = nil
-                if let urlRange = result?.range(at: 2) {
+                if let urlRange = result?.range(at: 1) {
                     url = (paragraph as NSString).substring(with: urlRange)
                     if url?.count == 0 {
                         url = nil

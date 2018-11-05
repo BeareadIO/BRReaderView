@@ -88,7 +88,6 @@
 				28EBE149214BC07D008DD1C5 /* BRReaderViewUITests */,
 				28EBE133214BC07D008DD1C5 /* Products */,
 				DD2CD4BAF5C900A9ABBC97BD /* Pods */,
-				F228FCA8542B560A3A419064 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -136,6 +135,7 @@
 		DD2CD4BAF5C900A9ABBC97BD /* Pods */ = {
 			isa = PBXGroup;
 			children = (
+				F228FCA8542B560A3A419064 /* Frameworks */,
 				C11C5F87AE3067A8F2CC1357 /* Pods-BRReaderView.debug.xcconfig */,
 				2D1344A81775217CFBAEA557 /* Pods-BRReaderView.release.xcconfig */,
 			);
@@ -261,12 +261,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-BRReaderView/Pods-BRReaderView-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/TinyConstraints/TinyConstraints.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TinyConstraints.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -475,6 +477,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZR4YN8UXKQ;
 				INFOPLIST_FILE = BRReaderView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -493,6 +496,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZR4YN8UXKQ;
 				INFOPLIST_FILE = BRReaderView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
